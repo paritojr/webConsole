@@ -16,7 +16,7 @@ but anyways, you're still able to do cool stuff with it, like, well, nothing els
 i'll keep updating the app, but for now, look at this cool demo screenshot:
 <br>
 <br>
-<img src="README_assets/screenshot.png" width="400" height="500">
+<img src="README_assets/lolascreenshot.png" width="400" height="500">
 <br>
 hehehe
 
