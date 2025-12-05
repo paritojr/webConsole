@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>webConsole</title>
+    <style>
+      #terminal {
+        width: 95vw;
+        height: 50vh;
+        padding: 10px;
+        font-family: "Monaco", "Menlo", "Ubuntu Mono", "Consolas", "source-code-pro", monospace;
+        white-space: pre;
+        color: white;
+        background-color: #000;
+        overflow-y: auto;
+      }
+      input {
+        caret-shape: block;
+        width: 80vw;
+        font-size: 16px; 
+        background-color: #000;
+        color: white;
+        border: none;
+        outline: none;
+        font-family: "Monaco", "Menlo", "Ubuntu Mono", "Consolas", "source-code-pro", monospace;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="terminal"></div>
+    <script>
+      const terminal = document.getElementById('terminal');
+      function createElement(type, content = '') {
+          const element = document.createElement(type);
+          element.innerHTML = content;
+          return element;
+      }
+      async function runCommand() {
+          const oldInput = terminal.querySelector('input');
+          const command = oldInput.value;
+          const response = await fetch('/api/terminal', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ data: command }),
+          })
+          const data = await response.json();
+          terminal.appendChild(createElement('span', command + '<br>'));
+          terminal.appendChild(createElement('span', data.result + '<br>'));
+          terminal.appendChild(createElement('span', 'runner@workspace:~$ '));
+          const newInput = document.createElement('input');
+          terminal.appendChild(newInput);
+          newInput.focus();
+          newInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                runCommand();
+            }
+          });
+          terminal.removeChild(oldInput);
+      }
+      function initializeTerminal() {
+          const promptLine = document.createElement('span');
+          promptLine.innerHTML = 'runner@workspace:~$ ';
+          terminal.appendChild(promptLine);
+          const inputField = document.createElement('input');
+          terminal.appendChild(inputField);
+          inputField.focus();
+          inputField.addEventListener('keydown', (e) => {
+              if (e.key === 'Enter') {
+                  runCommand();
+              }
+          });
+      }
+      initializeTerminal();
+    </script>
+  </body>
+</html>
