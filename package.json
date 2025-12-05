@@ -1,0 +1,15 @@
+{
+  "name": "dogTerminal",
+  "version": "1.0.0",
+  "description": "a terminal on the web without ttyd",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"oh hello\" && exit 1"
+  },
+  "keywords": [],
+  "author": "paritojr",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
