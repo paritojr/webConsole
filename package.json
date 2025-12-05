@@ -1,5 +1,5 @@
 {
-  "name": "dogTerminal",
+  "name": "webConsole",
   "version": "1.0.0",
   "description": "a terminal on the web without ttyd",
   "main": "main.js",
