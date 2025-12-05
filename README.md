@@ -33,3 +33,13 @@ hehehe
 after doing this, you should be able to see the program live on `http://localhost:3000`, try running commands with it later!
 <br>
 <br>
+
+## License
+
+This app is licensed under the MIT License, for more information, check the LICENSE file
+
+ao, umm... yeah
+<br>
+use it pls, it's free after all
+<br>
+haha
